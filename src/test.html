@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <canvas id="canvas" width="500" height="200" style="border:1px solid #000000;"></canvas>
+      <p id="demo"></p>
+    <script>
+      function getMousePos(canvas, e) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        };
+      }
+
+      var isDrawing = false;
+      var canvas = document.getElementById("canvas");
+      var coords = document.getElementById("demo");
+      var context = canvas.getContext("2d");
+      var mousePos;
+
+      canvas.addEventListener('mousemove', function(e) {
+        mousePos = getMousePos(canvas, e);
+        if (isDrawing) {
+          context.fillStyle = "#000000";
+          context.fillRect(mousePos.x, mousePos.y, 10, 10);
+        }
+        coords.innerHTML = "x: " + mousePos.x + ", y: " + mousePos.y;
+      }, false);
+
+      canvas.addEventListener('mousedown', function(e) {
+        isDrawing = true;
+      }, false);
+
+      canvas.addEventListener('mouseup', function(e) {
+        isDrawing = false;
+      }, false);
+    </script>
+  </body>
+</html>
