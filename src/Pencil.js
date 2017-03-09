@@ -36,7 +36,7 @@ export default (context) => {
     context.beginPath();
     context.lineWidth = 5;
     context.strokeStyle = "#000000";
-    context.globalCompositeOperation = 'source-over';
+    context.globalCompositeOperation = "source-over";
     context.moveTo(start.x, start.y);
     context.lineTo(x, y);
     context.closePath();

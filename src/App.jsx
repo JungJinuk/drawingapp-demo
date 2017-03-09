@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import Canvas from './Canvas';
 import canvasStyle from './canvas.css';
+import NavBar from './NavBar';
+import Timer from './Timer';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <h1>React Canvas</h1>
+        <NavBar />
+        <Timer />
         <Canvas
           style={canvasStyle}
           width={800}
