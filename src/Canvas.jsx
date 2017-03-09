@@ -15,21 +15,20 @@ class Canvas extends Component {
   }
 
   componentDidMount() {
-    this.canvas = findDOMNode(this);
     this.ctx = this.canvas.getContext("2d");
     this.tool = Pencil(this.ctx);
   }
 
   onMouseDown(e) {
-    const data = this.tool.onMouseDown(...this.getCursorPosition(e));
+    this.tool.onMouseDown(...this.getCursorPosition(e));
   }
 
   onMouseUp(e) {
-    const data = this.tool.onMouseUp(...this.getCursorPosition(e));
+    this.tool.onMouseUp(...this.getCursorPosition(e));
   }
 
   onMouseMove(e) {
-    const data = this.tool.onMouseMove(...this.getCursorPosition(e));
+    this.tool.onMouseMove(...this.getCursorPosition(e));
   }
 
   getCursorPosition(e) {
@@ -44,6 +43,7 @@ class Canvas extends Component {
     const { width, height } = this.props;
     return (
       <canvas
+        ref={(canvas) => { this.canvas = canvas; }}
         className="my-canvas"
         onMouseDown={this.onMouseDown}
         onMouseUp={this.onMouseUp}
